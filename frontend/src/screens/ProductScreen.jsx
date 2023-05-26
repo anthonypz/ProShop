@@ -8,6 +8,8 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Rating from "../components/Rating";
 import { useGetProductDetailsQuery } from "../slices/productApiSlice";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -26,9 +28,9 @@ const ProductScreen = () => {
         Go Back
       </Link>
       {isLoading ? (
-        <h2>Loading...</h2>
+        <Loader />
       ) : error ? (
-        <div>{error?.data?.message || error.error}</div>
+        <Message>{error?.data?.message || error.error}</Message>
       ) : (
         <>
           {" "}
