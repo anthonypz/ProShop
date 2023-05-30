@@ -1,18 +1,46 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import FormContainer from "../components/FormContainer";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../components/Loader";
+import { useLoginMutation } from "../slices/usersApiSlice";
+import { setCredentials } from "../slices/authSlice";
+import { toast } from "react-toastify";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const submitHandler = (e) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [login, { isLoading }] = useLoginMutation();
+
+  const { userInfo } = useSelector((state) => state.auth);
+
+  const { search } = useLocation();
+  const searchParams = new URLSearchParams(search);
+  const redirect = searchParams.get("redirect") || "/";
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [navigate, redirect, userInfo]);
+
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("submitHandler");
+    try {
+      const res = await login({ email, password }).unwrap();
+      dispatch(setCredentials({ ...res }));
+      navigate(redirect);
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
   };
 
   return (
@@ -50,14 +78,20 @@ const LoginScreen = () => {
           type="submit"
           variant="primary"
           className="mt-2"
+          disabled={isLoading}
         >
           Sign In
         </Button>
+
+        {isLoading && <Loader />}
       </Form>
 
       <Row className="py-3">
         <Col>
-          New Customer? <Link to="">Register</Link>
+          New Customer?{" "}
+          <Link to={redirect ? `/register?redirect=${redirect}` : "/register"}>
+            Register
+          </Link>
         </Col>
       </Row>
     </FormContainer>
