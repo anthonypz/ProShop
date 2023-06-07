@@ -9,7 +9,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Rating from "../components/Rating";
 import Form from "react-bootstrap/Form";
-import { useGetProductDetailsQuery } from "../slices/productApiSlice";
+import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useDispatch } from "react-redux";
