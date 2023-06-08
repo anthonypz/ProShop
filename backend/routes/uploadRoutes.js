@@ -4,13 +4,9 @@ import multer from "multer";
 
 const router = express.Router();
 
-// If production, use Render server's data folder, else use local uploads folder
-const uploadFolder =
-  process.env.NODE_ENV === "production" ? "/var/data/" : "uploads/";
-
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    cb(null, uploadFolder);
+    cb(null, "uploads/");
   },
   filename(req, file, cb) {
     cb(
@@ -33,12 +29,12 @@ function checkFileType(file, cb) {
   }
 }
 
-const upload = multer([storage]);
+const upload = multer({ storage });
 
 router.post("/", upload.single("image"), (req, res) => {
   res.send({
     message: "Image uploaded successfully",
-    image: `${req.file.path}`,
+    image: `/${req.file.path}`,
   });
 });
 
