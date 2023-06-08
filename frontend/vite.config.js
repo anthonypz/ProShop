@@ -7,6 +7,10 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": "http://localhost:5001",
+      "/uploads": {
+        target: "http://localhost:5001",
+        secure: false,
+      },
     },
   },
 });
