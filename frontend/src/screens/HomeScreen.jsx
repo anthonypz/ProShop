@@ -38,7 +38,7 @@ const HomeScreen = () => {
       ) : (
         <>
           <Meta />
-          <h1>Latest Products</h1>
+          <h1 className="mb-0">Latest Products</h1>
           <Row>
             {data.products.map((product) => (
               <Col

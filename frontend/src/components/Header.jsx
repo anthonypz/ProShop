@@ -5,7 +5,7 @@ import Badge from "react-bootstrap/Badge";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { LinkContainer } from "react-router-bootstrap";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.svg";
 import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
@@ -36,7 +36,7 @@ const Header = () => {
       <Navbar
         bg="dark"
         variant="dark"
-        expand="md"
+        expand="lg"
         collapseOnSelect
       >
         <Container>
@@ -45,8 +45,8 @@ const Header = () => {
               <img
                 src={logo}
                 alt="ProShop"
+                width={130}
               />
-              ProShop
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
