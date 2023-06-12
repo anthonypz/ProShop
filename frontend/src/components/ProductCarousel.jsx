@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import Image from "react-bootstrap/Image";
-import Loader from "./Loader";
 import Message from "./Message";
 import { useGetTopProductsQuery } from "../slices/productsApiSlice";
 
@@ -15,7 +14,7 @@ const ProductCarousel = () => {
   ) : (
     <Carousel
       pause="hover"
-      className="bg-primary my-4"
+      className="bg-secondary my-4"
     >
       {products.map((product) => (
         <Carousel.Item key={product._id}>
@@ -27,9 +26,9 @@ const ProductCarousel = () => {
               className="d-block mx-auto"
             />
             <Carousel.Caption className="carousel-caption">
-              <h2 className="text-white text-right">
+              <h3 className="text-white text-right">
                 {product.name} (${product.price})
-              </h2>
+              </h3>
             </Carousel.Caption>
           </Link>
         </Carousel.Item>

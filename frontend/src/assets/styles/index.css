@@ -55,3 +55,10 @@ table th {
   bottom: 0;
   background: rgba(0, 0, 0, 0.801);
 }
+
+.carousel-item img {
+  object-fit: cover;
+  object-position: center;
+  height: 50vh;
+  overflow: hidden;
+}
