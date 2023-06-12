@@ -14,7 +14,7 @@ const ProductCarousel = () => {
   ) : (
     <Carousel
       pause="hover"
-      className="bg-secondary my-4"
+      className="bg-secondary my-4 rounded"
     >
       {products.map((product) => (
         <Carousel.Item key={product._id}>
