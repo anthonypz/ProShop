@@ -2,7 +2,9 @@
 
 ProShop is a full-featured eCommerce platform with shopping cart, product search, admin panel area, product reviews, PayPal integration, and a multi-step checkout process.
 
-**Link to project:** https://theproshop.fly.dev/
+<img src="https://i.ibb.co/GMXNVcb/1687986019771-Up-Mock.png" width=450 height='auto' /> <img src="https://i.ibb.co/dDV2vZj/1687986105529-Up-Mock.png" width=450 height='auto' />
+
+**Link to project:** https://proshop.anthonypz.com/
 
 
 ## How It's Made:
